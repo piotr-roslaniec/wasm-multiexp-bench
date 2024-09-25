@@ -1,0 +1,20 @@
+[package]
+name = "wasm32-curve-benchmark"
+version = "0.1.0"
+authors = ["Piotr Roslaniec <p.roslaniec@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ark-bls12-381 = "0.4.0"
+ark-bn254 = "0.4.0"
+ark-ec = "0.4.2"
+ark-ff = "0.4.2"
+ark-std = "0.4.0"
+ark-test-curves = "0.4.2"
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
+web-time = "1.1.0"
+serde = { version = "1.0.210", features = ["derive"] }

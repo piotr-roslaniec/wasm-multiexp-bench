@@ -1,0 +1,12 @@
+{
+  "name": "bench-wasmcurves",
+  "scripts": {
+    "bench": "npm run bench-ffjavascript && npm run bench-arkworks",
+    "bench-ffjavascript": "node bench-ffjavascript.js",
+    "bench-arkworks": "node bench-arkworks.js"
+  },
+  "dependencies": {
+    "ffjavascript": "^0.3.0",
+    "arkworks": "../pkg"
+  }
+}

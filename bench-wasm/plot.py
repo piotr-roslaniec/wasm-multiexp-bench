@@ -32,7 +32,7 @@ for source in merged_df['Source'].unique():
 
 plt.xlabel('N')
 plt.ylabel('Time (ms)')
-plt.title('Performance Comparison')
+plt.title('Performance Comparison (lower is better)')
 plt.legend()
 plt.grid(True)
 plt.xscale('log')  # Assuming N is in powers of 2, a log scale might be appropriate

@@ -75,7 +75,6 @@ async function runBenchmark(singleThread) {
   }
 }
 
-// Example usage
 (async () => {
   await runBenchmark(true);
   await runBenchmark(false);

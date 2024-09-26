@@ -8,7 +8,8 @@ multi-exponentiation on the BLS12-381 curve.
 Build and run with:
 
 ```bash
-wasm-pack build --target nodejs
+cd ../
+wasm-pack build --release  --target nodejs
 cd bench-wasm
 npm i
 npm run bench

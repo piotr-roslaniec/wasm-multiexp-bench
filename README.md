@@ -5,19 +5,14 @@ multi-exponentiation on the BLS12-381 curve.
 
 ## Usage
 
-Build and run with:
+First, build WASM dependencies with:
 
 ```bash
-cd ../
-wasm-pack build --release  --target nodejs
-cd bench-wasm
-npm i
-npm run bench
+bash scripts/build.bash
 ```
 
-Inspect results in `bench-wasm/*.csv` files or plot them:
+You may run tests with:
 
 ```bash
-pip install pandas matplotlib
-python plot.py
+bash scripts/test.bash
 ```

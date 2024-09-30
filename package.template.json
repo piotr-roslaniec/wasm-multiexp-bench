@@ -1,0 +1,16 @@
+{
+  "name": "wasm_multiexp_bench",
+  "exports": {
+    "./node": "./pkg-node/wasm_multiexp_bench.js",
+    "./web-singlethreaded": "./pkg-web-singlethreaded/wasm_multiexp_bench.js",
+    "./web-multithreaded": "./pkg-web-multithreaded/wasm_multiexp_bench.js"
+  },
+  "license": "GPL-3.0-only",
+  "collaborators": ["Piotr Roslaniec <p.roslaniec@gmail.com>"],
+  "files": [
+    "pkg-node/**/*.*",
+    "pkg-web-singlethreaded/**/*.*",
+    "pkg-web-multithreaded/**/*.*"
+  ],
+  "sideEffects": ["pkg-web-multithreaded/snippets/**/*.*"]
+}

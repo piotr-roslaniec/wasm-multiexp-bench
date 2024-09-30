@@ -1,5 +1,4 @@
-const { buildBls12381 } = require("ffjavascript");
-const { BigBuffer } = require("ffjavascript");
+const { buildBls12381, BigBuffer } = require("ffjavascript");
 const fs = require("fs");
 const path = require("path");
 
@@ -30,7 +29,9 @@ async function runBenchmark(singleThread) {
 
     for (let NExp = 12; NExp <= 20; NExp++) {
       const N = 2 ** NExp;
-      console.log(`BLS12-381 multi-exponentiation, ${singleThreadStr}, N = ${N} elements`);
+      console.log(
+        `BLS12-381 multi-exponentiation, ${singleThreadStr}, N = ${N} elements`,
+      );
 
       const scalars = new BigBuffer(N * bls12381.Fr.n8);
       const bases = new BigBuffer(N * G1.F.n8 * 2);
@@ -63,9 +64,12 @@ async function runBenchmark(singleThread) {
       results.push({ N, avg, median });
     }
     const csvContent =
-        "N,Average,Median\n" +
-        results.map((r) => `${r.N},${r.avg},${r.median}`).join("\n");
-    const filePath = path.join(__dirname, `results-ffjavascript-${singleThreadStr}.csv`);
+      "N,Average,Median\n" +
+      results.map((r) => `${r.N},${r.avg},${r.median}`).join("\n");
+    const filePath = path.join(
+      __dirname,
+      `results-ffjavascript-${singleThreadStr}.csv`,
+    );
     fs.writeFileSync(filePath, csvContent);
     console.log(`Results saved to ${filePath}`);
   } catch (error) {

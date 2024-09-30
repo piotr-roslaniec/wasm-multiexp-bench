@@ -4,3 +4,5 @@ Cargo.lock
 bin/
 pkg/
 node_modules/
+dist/
+pw-outputs

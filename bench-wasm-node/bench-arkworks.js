@@ -1,4 +1,4 @@
-const { bench_bls12381 } = require("arkworks");
+const { bench_bls12381 } = require("arkworks/node");
 const fs = require("fs");
 const path = require("path");
 

@@ -6,6 +6,9 @@ use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use web_time::Instant;
 
+#[cfg(feature = "multithreading")]
+pub use wasm_bindgen_rayon::init_thread_pool;
+
 #[derive(Serialize, Deserialize)]
 #[wasm_bindgen]
 pub struct BenchmarkResult {
@@ -48,4 +51,10 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
 
     // Serialize results to JSON
     JsValue::from_serde(&results).map_err(|e| e.to_string().into())
+}
+
+pub mod wasm_test {
+    pub fn wasm_sanity_check() {
+        crate::bench_bls12381(1, 1).unwrap();
+    }
 }

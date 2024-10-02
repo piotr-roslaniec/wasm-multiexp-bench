@@ -15,9 +15,11 @@ clean() {
 }
 
 build_pkg() {
-    wasm-pack build --dev --target nodejs --out-dir pkg/pkg-node --no-default-features
-    wasm-pack build --dev --target web --out-dir pkg/pkg-web-singlethreaded
-    wasm-pack build --dev --target web --out-dir pkg/pkg-web-multithreaded --features multithreading
+#    MODE=dev
+    MODE=release
+    wasm-pack build --${MODE} --target nodejs --out-dir pkg/pkg-node --no-default-features
+    wasm-pack build --${MODE} --target web --out-dir pkg/pkg-web-singlethreaded
+    wasm-pack build --${MODE} --target web --out-dir pkg/pkg-web-multithreaded --features multithreading
     cp package.template.json pkg/package.json
 }
 

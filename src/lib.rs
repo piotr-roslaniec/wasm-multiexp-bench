@@ -1,7 +1,6 @@
 use ark_bls12_381::{Fr, G1Affine, G1Projective};
 use ark_ec::{CurveGroup, VariableBaseMSM};
-use ark_std::rand::SeedableRng;
-use ark_std::UniformRand;
+use ark_std::{rand::SeedableRng, UniformRand};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use web_time::Instant;
@@ -12,9 +11,9 @@ pub use wasm_bindgen_rayon::init_thread_pool;
 #[derive(Serialize, Deserialize)]
 #[wasm_bindgen]
 pub struct BenchmarkResult {
-    pub n: u32,
+    pub n:          u32,
     pub average_ms: f64,
-    pub median_ms: f64,
+    pub median_ms:  f64,
 }
 
 #[wasm_bindgen]
@@ -26,9 +25,8 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
 
     // Setup scalars and points
     let scalars: Vec<Fr> = (0..n).map(|_| Fr::rand(&mut rng)).collect();
-    let points: Vec<G1Affine> = (0..n)
-        .map(|_| G1Projective::rand(&mut rng).into_affine())
-        .collect();
+    let points: Vec<G1Affine> =
+        (0..n).map(|_| G1Projective::rand(&mut rng).into_affine()).collect();
 
     let mut test_results = Vec::with_capacity(test_cases as usize);
 
@@ -43,18 +41,12 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
     let avg = test_results.iter().sum::<f64>() / test_results.len() as f64;
     let median = test_results[test_results.len() / 2];
 
-    results.push(BenchmarkResult {
-        n,
-        average_ms: avg,
-        median_ms: median,
-    });
+    results.push(BenchmarkResult { n, average_ms: avg, median_ms: median });
 
     // Serialize results to JSON
     JsValue::from_serde(&results).map_err(|e| e.to_string().into())
 }
 
 pub mod wasm_test {
-    pub fn wasm_sanity_check() {
-        crate::bench_bls12381(1, 1).unwrap();
-    }
+    pub fn wasm_sanity_check() { crate::bench_bls12381(1, 1).unwrap(); }
 }

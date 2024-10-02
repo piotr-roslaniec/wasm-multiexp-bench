@@ -6,7 +6,5 @@ mod test {
     wasm_bindgen_test_configure!(run_in_dedicated_worker);
 
     #[wasm_bindgen_test]
-    fn test_wasm_sanity_check() {
-        wasm_sanity_check();
-    }
+    fn test_wasm_sanity_check() { wasm_sanity_check(); }
 }

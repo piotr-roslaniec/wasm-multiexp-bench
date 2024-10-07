@@ -1,6 +1,6 @@
-| Method       | Average Time (ms) | Median Time (ms) | Benchmark | Test Cases | Threads   | N     |
-|--------------|-------------------|------------------|-----------|------------|-----------|-------|
-| ffjavascript | 2817.24 (0.00%)   | 2726.93 (0.00%)  | chromium  | 100        | undefined | 65536 |
-| arkworks     | 5412.37 (92.12%)  | 5314.79 (94.90%) | chromium  | 100        | undefined | 65536 |
-| ffjavascript | 776.15 (0.00%)    | 536.50 (0.00%)   | chromium  | 100        | 16        | 65536 |
-| arkworks     | 1381.62 (78.01%)  | 1068.41 (99.14%) | chromium  | 100        | 16        | 65536 |
+| Method       | Average Time (ms) | Median Time (ms) | Benchmark | Test Cases | Threads   | N    |
+|--------------|-------------------|------------------|-----------|------------|-----------|------|
+| ffjavascript | 244.54 (0.00%)    | 240.40 (0.00%)   | chromium  | 200        | undefined | 4096 |
+| arkworks     | 481.34 (96.83%)   | 468.76 (94.99%)  | chromium  | 200        | undefined | 4096 |
+| ffjavascript | 44.98 (0.00%)     | 44.32 (0.00%)    | chromium  | 200        | 16        | 4096 |
+| arkworks     | 96.60 (114.76%)   | 95.47 (115.39%)  | chromium  | 200        | 16        | 4096 |

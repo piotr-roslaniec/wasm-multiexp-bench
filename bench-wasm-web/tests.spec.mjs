@@ -52,9 +52,9 @@ const appendResultRecord = (testInfo, logFile, config, result) => {
 
 // Benchmark configs
 const BASE = {
-  testCases: 10,
+  testCases: 200,
   threads: undefined,
-  n: 2 ** 16,
+  n: 2 ** 12,
 };
 const ARKWORKS = {
   ...BASE,

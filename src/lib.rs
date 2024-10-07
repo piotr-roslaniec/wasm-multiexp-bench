@@ -32,9 +32,12 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
 
     for _ in 0..test_cases {
         let start = Instant::now();
-        let _result = G1Projective::msm(&points, &scalars);
+        let result = G1Projective::msm(&points, &scalars).unwrap();
         let elapsed = start.elapsed();
         test_results.push(elapsed.as_secs_f64() * 1000.0);
+
+        // Use the result to prevent optimization
+        std::hint::black_box(result);
     }
 
     test_results.sort_by(|a, b| a.partial_cmp(b).unwrap());

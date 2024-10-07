@@ -97,6 +97,7 @@ startButton.disabled = true;
 
 // Disabled because we are calling `page.evaluate` multiple times in test.spec.mjs
 // Enabling may be necessary to run locally with `npm run start`
+// TODO: Fix this
 // const inputThreads = navigator.hardwareConcurrency;
 // initThreads(inputThreads)
 //   .then(() => {

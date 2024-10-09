@@ -37,7 +37,7 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
         test_results.push(elapsed.as_secs_f64() * 1000.0);
 
         // Use the result to prevent optimization
-        // std::hint::black_box(result);
+        std::hint::black_box(result);
     }
 
     test_results.sort_by(|a, b| a.partial_cmp(b).unwrap());

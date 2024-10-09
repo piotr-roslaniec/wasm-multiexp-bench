@@ -54,7 +54,7 @@ const appendResultRecord = (testInfo, logFile, config, result) => {
 const BASE = {
   testCases: 200,
   threads: undefined,
-  n: 2 ** 12,
+  n: 2 ** 16,
 };
 const ARKWORKS = {
   ...BASE,
@@ -65,16 +65,29 @@ const FFJAVASCRIPT = {
   method: "ffjavascript",
 };
 const TEST_CONFIGS = {
-  // For testing, we use `arkworks` to make sure that the WASM setup works with Playwright - One test case is enough
-  test_st: { ...ARKWORKS, testCases: 1, n: 2 ** 6 },
-  test_mt: { ...ARKWORKS, testCases: 1, threads: "max_concurrency", n: 2 ** 6 },
+  test_st_arkworks: { ...ARKWORKS, testCases: 1, n: 2 ** 6 },
+  test_st_ffjavascript: { ...FFJAVASCRIPT, testCases: 1, n: 2 ** 6 },
+  test_mt_arkworks: { ...ARKWORKS, testCases: 1, threads: 2, n: 2 ** 6 },
+  test_mt_ffjavascript: {
+    ...FFJAVASCRIPT,
+    testCases: 1,
+    threads: 2,
+    n: 2 ** 6,
+  },
 };
 const BENCHMARK_CONFIGS = {
-  st_arkworks: ARKWORKS,
   st_ffjavascript: FFJAVASCRIPT,
-  // We set max-concurrency here because `ffjavascript` automatically pick max threads too
-  mt_ffjavascript: { ...FFJAVASCRIPT, threads: "max_concurrency" },
-  mt_arkworks: { ...ARKWORKS, threads: "max_concurrency" },
+  mt_32_ffjavascript: { ...FFJAVASCRIPT, threads: 32 },
+  mt_16_ffjavascript: { ...FFJAVASCRIPT, threads: 16 },
+  mt_8_ffjavascript: { ...FFJAVASCRIPT, threads: 8 },
+  mt_4_ffjavscript: { ...FFJAVASCRIPT, threads: 4 },
+  mt_2_ffjavascript: { ...FFJAVASCRIPT, threads: 2 },
+  st_arkworks: ARKWORKS,
+  mt_32_arkworks: { ...ARKWORKS, threads: 32 },
+  mt_16_arkworks: { ...ARKWORKS, threads: 16 },
+  mt_8_arkworks: { ...ARKWORKS, threads: 8 },
+  mt_4_arkworks: { ...ARKWORKS, threads: 4 },
+  mt_2_arkworks: { ...ARKWORKS, threads: 2 },
 };
 
 const ALL_CONFIGS = {

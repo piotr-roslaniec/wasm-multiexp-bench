@@ -66,7 +66,9 @@ export class BenchmarkWorker {
         }
       }
       default: {
-        throw Error(`Unknown benchmark function: ${benchmarkFn}`);
+        throw Error(
+          `Unknown benchmark function: ${JSON.stringify(benchmarkFn)}`,
+        );
       }
     }
   }

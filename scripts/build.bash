@@ -15,8 +15,8 @@ clean() {
 }
 
 build_pkg() {
-#    MODE=dev
-    MODE=release
+    MODE=dev
+#    MODE=release
     wasm-pack build --${MODE} --target nodejs --out-dir pkg/pkg-node --no-default-features
     wasm-pack build --${MODE} --target web --out-dir pkg/pkg-web-singlethreaded
     wasm-pack build --${MODE} --target web --out-dir pkg/pkg-web-multithreaded --features multithreading

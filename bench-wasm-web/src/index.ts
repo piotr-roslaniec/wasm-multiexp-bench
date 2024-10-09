@@ -37,7 +37,7 @@ startButton.onclick = async () => {
   const selectedBenchmark = benchmarkSelect.value;
   benchmarkStatus.textContent = "Running benchmark...";
   try {
-    const { average_ms } = await start(selectedBenchmark, 20, 2 ** 12);
+    const { average_ms } = await start(selectedBenchmark, 100, 2 ** 12);
     benchmarkStatus.innerHTML = `Average time: ${average_ms}ms<br>`;
   } catch (error: any) {
     console.error("Error running benchmark:", error);

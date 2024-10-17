@@ -1,0 +1,63 @@
+name: Workspace
+
+on:
+  pull_request:
+    paths-ignore:
+      - README.md
+  push:
+    paths-ignore:
+      - README.md
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  RUST_TOOLCHAIN: nightly-2024-07-08
+
+jobs:
+  test-wasm-ts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test-package: [ web, node ]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          target: wasm32-unknown-unknown
+          components: rust-src
+      - run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - run: bash scripts/build.bash
+      - run: npm install
+        working-directory: package-tests/${{ matrix.test-package }}
+        # If the package is the web package, we need to install the browser drivers
+      - if: matrix.test-package == 'web'
+        run: npm run setup-playwright
+        working-directory: package-tests/${{ matrix.test-package }}
+      - run: npm run test
+        working-directory: package-tests/${{ matrix.test-package }}
+
+  test-ts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          targets: wasm32-unknown-unknown
+          components: rust-src
+      - run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - run: bash scripts/build.bash
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4.0.2
+      - run: npm install && npm run setup-playwright --install-deps
+        working-directory: bench-wasm-web
+      - run: npm run e2e
+        working-directory: bench-wasm-web

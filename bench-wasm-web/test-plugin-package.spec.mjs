@@ -10,7 +10,7 @@ const TEST_CONFIG = {
 };
 
 const observableCalls = [
-  "<ark_ff::fields::models::fp::Fp<P,_> as core::ops::arith::MulAssign<&ark_ff::fields::models::fp::Fp<P,_>>>::mul_assign::h4bc49a840ba2a0eb",
+  "mul_assign",
 ];
 
 test("Measure performance of WASM calls", async () => {

@@ -10,7 +10,7 @@ export default {
   retries: process.env.CI ? 2 : 0, // Retry failed tests only on CI
   workers: process.env.CI ? 1 : undefined,
   webServer: {
-    command: "pnpm build && pnpm start:prod",
+    command: "npm run build && npm run start:prod",
     url,
     reuseExistingServer: false,
   },

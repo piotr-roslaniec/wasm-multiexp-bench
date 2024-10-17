@@ -8,7 +8,7 @@
     "setup-playwright": "playwright install --with-deps chromium firefox",
     "prebuild": "rm -rf dist",
     "build:tsc": "tsc",
-    "build": "pnpm build:tsc && webpack --config webpack.config.js",
+    "build": "npm run build:tsc && webpack --config webpack.config.js",
     "start": "webpack-dev-server",
     "start:prod": "npx serve",
     "e2e": "SELECTED_PW_CONFIGS='ALL_TEST' playwright test --config playwright.test.config.mjs",

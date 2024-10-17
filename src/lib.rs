@@ -3,10 +3,9 @@ use ark_ec::{CurveGroup, VariableBaseMSM};
 use ark_std::{rand::SeedableRng, UniformRand};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
-use web_time::Instant;
-
 #[cfg(feature = "multithreading")]
 pub use wasm_bindgen_rayon::init_thread_pool;
+use web_time::Instant;
 
 #[derive(Serialize, Deserialize)]
 #[wasm_bindgen]

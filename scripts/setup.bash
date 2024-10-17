@@ -28,8 +28,5 @@ source "$HOME"/.bashrc
 nvm install 18
 nvm use 18
 
-# Install pnpm globally
-npm i -g pnpm
-
 # Install Playwright with all dependencies
 (cd bench-wasm-web && npx playwright install --with-deps)

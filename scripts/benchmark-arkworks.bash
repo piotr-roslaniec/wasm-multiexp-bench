@@ -17,7 +17,7 @@ run_benchmarks() {
     npm i
     npm run benchmark
     npm run parse-benchmark
-    cp BENCHMARK.md $benchmark_file
+    cp BENCHMARK.md bench-results/$benchmark_file
 
     cd ..
 }

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "arkworks": "file:../pkg",
+    "playwright-perf-plugin": "file:../playwright-perf-plugin",
     "comlink": "^4.4.1",
     "ffjavascript": "git+https://github.com/piotr-roslaniec/ffjavascript.git#n_threads"
   },

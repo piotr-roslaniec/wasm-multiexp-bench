@@ -1,0 +1,9 @@
+{
+  "name": "playwright-perf-plugin",
+  "version": "0.1.0",
+  "description": "A plugin for playwright to measure performance of V8 calls.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Piotr Roslaniec <p.roslaniec@gmail.com>",
+  "license": "MIT"
+}

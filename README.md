@@ -25,8 +25,6 @@ Compare performance of `ffjavascript`, `ark-*@0.5.0-alpha.0` and `ark-*@0.4.x` c
 bash scripts/benchmark.bash
 ```
 
-See `./benchmark-results` to find persisted benchmark results.
-
 Generate combined results file and plot results:
 
 ```bash
@@ -34,3 +32,12 @@ Generate combined results file and plot results:
 python scripts/plot-benchmark.py
 ```
 
+### Results
+
+See `./benchmark-results` to find persisted benchmark results.
+
+You can view tracing files (JSON files) using [CPUPro](https://discoveryjs.github.io/cpupro/)
+
+#### Performance comparison
+
+![performance comparison](bench-results/performance_comparison.png)

@@ -70,8 +70,8 @@ def plot_performance(combined_data, output_image):
     # Plot the data
     plt.figure(figsize=(10, 6))
     plt.plot(threads, ffjavascript_times, label='ffjavascript', marker='o', linestyle='-')
-    plt.plot(threads, old_arkworks_times, label='arkworks-old', marker='x', linestyle='--')
-    plt.plot(threads, new_arkworks_times, label='arkworks-new', marker='s', linestyle='-.')
+    plt.plot(threads, old_arkworks_times, label='ark-*@0.5.x', marker='x', linestyle='--')
+    plt.plot(threads, new_arkworks_times, label='ark-*@0.4.x', marker='s', linestyle='-.')
 
     plt.xlabel('Number of Threads')
     plt.ylabel('Average Time (ms)')

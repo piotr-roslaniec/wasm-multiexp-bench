@@ -12,7 +12,7 @@
     "start": "webpack-dev-server",
     "start:prod": "npx serve",
     "e2e": "SELECTED_PW_CONFIGS='ALL_TEST' playwright test --config playwright.test.config.mjs",
-    "benchmark": "SELECTED_PW_CONFIGS='ALL_BENCH' playwright test --config playwright.benchmark.config.mjs",
+    "benchmark": "SELECTED_PW_CONFIGS='ALL_BENCH' playwright test tests.spec.mjs --config playwright.benchmark.config.mjs",
     "parse-benchmark": "node scripts/parse-benchmark.js BENCHMARK.md"
   },
   "dependencies": {

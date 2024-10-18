@@ -29,4 +29,4 @@ nvm install 18
 nvm use 18
 
 # Install Playwright with all dependencies
-(cd bench-wasm-web && npx playwright install --with-deps)
+(cd bench-wasm-web && npm install && npx playwright install --with-deps) # works despite missing deps/errors

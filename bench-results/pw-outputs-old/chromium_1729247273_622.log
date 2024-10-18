@@ -1,0 +1,9 @@
+initThreads
+BenchmarkWorker: init(threads=8)
+BenchmarkWorker: initThreadpool
+BenchmarkWorker: init(threads=8) done
+Starting benchmark
+BLS12-381 multi-exponentiation: ffjavascript, n=65536 elements, test cases=200
+BenchmarkWorker: runBenchmark(65536, 200)
+{threadsInitialized: 8}
+BenchmarkWorker: runBenchmark() done

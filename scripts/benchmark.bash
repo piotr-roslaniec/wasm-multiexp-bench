@@ -6,8 +6,11 @@ set -e
 set -x
 
 run_benchmarks() {
-    local cargo_file=$1
-    local benchmark_file=$2
+    local mode=$1
+
+    local cargo_file="Cargo-$mode.toml"
+    local benchmark_file="BENCHMARK-$mode.md"
+    local pw_output_file="pw-outputs-$mode"
 
     cp $cargo_file Cargo.toml
     bash scripts/build.bash
@@ -17,13 +20,17 @@ run_benchmarks() {
     npm i
     npm run benchmark
     npm run parse-benchmark
-    cp BENCHMARK.md bench-results/$benchmark_file
+    mkdir -p ../bench-results
+    cp BENCHMARK.md ../bench-results/$benchmark_file
+    cp -r pw-outputs ../bench-results/$pw_output_file
 
     cd ..
 }
 
-# Run benchmarks for Arkworks 0.4
-run_benchmarks "Cargo-old.toml" "BENCHMARK-old.md"
+# Run benchmarks for Arkworks 0.4 (old)
+run_benchmarks "old"
 
-# Run benchmarks for Arkworks 0.5
-run_benchmarks "Cargo-new.toml" "BENCHMARK-new.md"
+# Run benchmarks for Arkworks 0.5 (new)
+run_benchmarks "new"
+
+

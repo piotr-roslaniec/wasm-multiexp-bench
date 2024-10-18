@@ -1,14 +1,12 @@
-| Method       | Average Time (ms) | Median Time (ms)  | Benchmark | Test Cases | Threads   | N     |
-| ------------ | ----------------- | ----------------- | --------- | ---------- | --------- | ----- |
-| ffjavascript | 3590.13 (0.00%)   | 3590.46 (0.00%)   | chromium  | 200        | undefined | 65536 |
-| arkworks     | 6616.29 (84.29%)  | 6617.92 (84.32%)  | chromium  | 200        | undefined | 65536 |
-| ffjavascript | 400.07 (0.00%)    | 399.32 (0.00%)    | chromium  | 200        | 2         | 65536 |
-| arkworks     | 3447.71 (761.77%) | 3449.93 (763.95%) | chromium  | 200        | 2         | 65536 |
-| ffjavascript | 405.27 (0.00%)    | 403.92 (0.00%)    | chromium  | 200        | 4         | 65536 |
-| arkworks     | 1737.20 (328.65%) | 1736.41 (329.90%) | chromium  | 200        | 4         | 65536 |
-| ffjavascript | 401.29 (0.00%)    | 402.43 (0.00%)    | chromium  | 200        | 8         | 65536 |
-| arkworks     | 1046.93 (160.89%) | 1047.46 (160.28%) | chromium  | 200        | 8         | 65536 |
-| ffjavascript | 398.46 (0.00%)    | 397.11 (0.00%)    | chromium  | 200        | 16        | 65536 |
-| arkworks     | 727.91 (82.68%)   | 727.40 (83.17%)   | chromium  | 200        | 16        | 65536 |
-| ffjavascript | 404.05 (0.00%)    | 404.68 (0.00%)    | chromium  | 200        | 32        | 65536 |
-| arkworks     | 691.15 (71.06%)   | 691.89 (70.97%)   | chromium  | 200        | 32        | 65536 |
+| Method       | Average Time (ms) | Median Time (ms) | Benchmark | Test Cases | Threads   | N    |
+|--------------|-------------------|------------------|-----------|------------|-----------|------|
+| ffjavascript | 105.46 (0.00%)    | 113.41 (0.00%)   | chromium  | 10         | undefined | 1024 |
+| arkworks     | 233.93 (121.81%)  | 228.51 (101.50%) | chromium  | 10         | undefined | 1024 |
+| ffjavascript | 24.94 (0.00%)     | 23.85 (0.00%)    | chromium  | 10         | 2         | 1024 |
+| arkworks     | 105.50 (323.05%)  | 103.01 (331.93%) | chromium  | 10         | 2         | 1024 |
+| ffjavascript | 18.55 (0.00%)     | 17.94 (0.00%)    | chromium  | 10         | 4         | 1024 |
+| arkworks     | 49.86 (168.81%)   | 50.17 (179.65%)  | chromium  | 10         | 4         | 1024 |
+| ffjavascript | 16.03 (0.00%)     | 15.96 (0.00%)    | chromium  | 10         | 8         | 1024 |
+| arkworks     | 63.72 (297.51%)   | 57.90 (262.86%)  | chromium  | 10         | 8         | 1024 |
+| ffjavascript | 18.13 (0.00%)     | 18.48 (0.00%)    | chromium  | 10         | 16        | 1024 |
+| arkworks     | 30.29 (67.03%)    | 29.72 (60.80%)   | chromium  | 10         | 16        | 1024 |

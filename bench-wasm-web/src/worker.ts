@@ -3,7 +3,7 @@ import * as arkworksMultithreaded from "arkworks/web-multithreaded";
 import * as arkworksSinglethreaded from "arkworks/web-singlethreaded";
 const { buildBls12381, BigBuffer } = require("ffjavascript"); // Doesn't support `import`-style imports
 
-let threadsInitialized = false;
+let threadsInitialized: number | undefined = 0;
 
 export class BenchmarkWorker {
   public async init(threads?: number): Promise<void> {
@@ -12,10 +12,10 @@ export class BenchmarkWorker {
       await arkworksMultithreaded.default();
       console.log(`BenchmarkWorker: initThreadpool`);
       await arkworksMultithreaded.initThreadPool(threads);
-      threadsInitialized = true;
+      threadsInitialized = threads;
     } else {
       await arkworksSinglethreaded.default();
-      threadsInitialized = false;
+      threadsInitialized = threads;
     }
     console.log(`BenchmarkWorker: init(threads=${threads}) done`);
   }
@@ -24,8 +24,13 @@ export class BenchmarkWorker {
     switch (benchmarkFn) {
       case "ffjavascript": {
         const fn = async (n: number, testCases: number) => {
-          const singleThread = !threadsInitialized;
-          const bls12381 = await buildBls12381(singleThread);
+          console.log({threadsInitialized})
+          let bls12381
+          if (!threadsInitialized || threadsInitialized === 1) {
+            bls12381 = await buildBls12381(true);
+          } else {
+            bls12381 = await buildBls12381(false, null, threadsInitialized);
+          }
 
           const Fr = bls12381.Fr;
           const G1 = bls12381.G1;

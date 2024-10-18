@@ -78,12 +78,14 @@ const TEST_CONFIGS = {
 const BENCHMARK_CONFIGS = {
   st_ffjavascript: FFJAVASCRIPT,
   mt_32_ffjavascript: { ...FFJAVASCRIPT, threads: 32 },
+  mt_24_ffjavascript: { ...FFJAVASCRIPT, threads: 24 },
   mt_16_ffjavascript: { ...FFJAVASCRIPT, threads: 16 },
   mt_8_ffjavascript: { ...FFJAVASCRIPT, threads: 8 },
   mt_4_ffjavscript: { ...FFJAVASCRIPT, threads: 4 },
   mt_2_ffjavascript: { ...FFJAVASCRIPT, threads: 2 },
   st_arkworks: ARKWORKS,
   mt_32_arkworks: { ...ARKWORKS, threads: 32 },
+  mt_24_arkworks: { ...ARKWORKS, threads: 24 },
   mt_16_arkworks: { ...ARKWORKS, threads: 16 },
   mt_8_arkworks: { ...ARKWORKS, threads: 8 },
   mt_4_arkworks: { ...ARKWORKS, threads: 4 },
@@ -139,11 +141,20 @@ for (const config of selectedConfigs) {
       }
     });
 
-    if (config.threads === "max_concurrency") {
-      config.threads = await page.evaluate(() => {
+    if (config.threads) {
+      const threadsLimit = await page.evaluate(() => {
         return navigator.hardwareConcurrency;
       });
-      console.log(`Updated number of threads to max: ${config.threads}`);
+
+      if(config.threads > threadsLimit) {
+        console.error(`Number of threads ${config.threads} exceeds the thread limit ${threadsLimit}`);
+        return;
+      }
+
+      if(config.threads=== "max_concurrency" || config.threads > threadsLimit) {
+        config.threads = threadsLimit
+        console.log(`Updated number of threads to max available: ${config.threads}`);
+      }
     }
 
     await page.goto(`/index.html`);

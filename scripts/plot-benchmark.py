@@ -84,8 +84,8 @@ def plot_performance(combined_data, output_image):
     # Plot the data with thread count as x-axis labels
     plt.figure(figsize=(10, 6))
     plt.plot(threads, ffjavascript_times, label='ffjavascript', marker='o', linestyle='-')
-    plt.plot(threads, old_arkworks_times, label='ark-*@0.5.x', marker='x', linestyle='--')
-    plt.plot(threads, new_arkworks_times, label='ark-*@0.4.x', marker='s', linestyle='-.')
+    plt.plot(threads, old_arkworks_times, label='ark-*@0.4.x', marker='x', linestyle='--')
+    plt.plot(threads, new_arkworks_times, label='ark-*@0.5.x', marker='s', linestyle='-.')
 
     plt.xticks(threads)  # Set the x-axis ticks to be the thread counts
 

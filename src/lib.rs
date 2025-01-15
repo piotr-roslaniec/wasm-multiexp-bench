@@ -3,6 +3,7 @@ use ark_ec::{CurveGroup, VariableBaseMSM};
 use ark_std::{rand::SeedableRng, UniformRand};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
+use serde_wasm_bindgen;
 #[cfg(feature = "multithreading")]
 pub use wasm_bindgen_rayon::init_thread_pool;
 use web_time::Instant;
@@ -36,7 +37,7 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
         test_results.push(elapsed.as_secs_f64() * 1000.0);
 
         // Use the result to prevent optimization
-        std::hint::black_box(result);
+        let _ = std::hint::black_box(result);
     }
 
     test_results.sort_by(|a, b| a.partial_cmp(b).unwrap());
@@ -46,7 +47,7 @@ pub fn bench_bls12381(n: u32, test_cases: u32) -> Result<JsValue, JsValue> {
     results.push(BenchmarkResult { n, average_ms: avg, median_ms: median });
 
     // Serialize results to JSON
-    JsValue::from_serde(&results).map_err(|e| e.to_string().into())
+    serde_wasm_bindgen::to_value(&results).map_err(|e| JsValue::from(e.to_string()))
 }
 
 pub mod wasm_test {

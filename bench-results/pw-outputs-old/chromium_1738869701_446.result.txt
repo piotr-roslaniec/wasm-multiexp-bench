@@ -1,0 +1,1 @@
+{"result":{"average_ms":26459.587483733336,"median_ms":26462.650146,"benchmarkFn":"arkworks"},"metaData":{"project":"chromium","config":{"testCases":30,"n":524288,"method":"arkworks"}}}

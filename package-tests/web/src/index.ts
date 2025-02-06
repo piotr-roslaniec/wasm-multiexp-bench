@@ -12,11 +12,13 @@ async function start(config: "single" | "multi") {
 
   if (config === "single") {
     await single.default();
-    single.bench_bls12381(1, 1);
+    single.bench_ark_bn254(1, 1);
+    single.bench_halo2curves_bn254(1, 1);
   } else if (config === "multi") {
     await multi.default();
     await multi.initThreadPool(navigator.hardwareConcurrency);
-    multi.bench_bls12381(1, 1);
+    multi.bench_ark_bn254(1, 1);
+    multi.bench_halo2curves_bn254(1, 1);
   } else {
     throw new Error(`Invalid config: ${config}`);
   }

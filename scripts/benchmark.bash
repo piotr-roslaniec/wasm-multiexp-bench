@@ -10,9 +10,9 @@ run_benchmarks() {
 
     local cargo_file="Cargo-$mode.toml"
     local benchmark_file="BENCHMARK-$mode.md"
-    local pw_output_file="pw-outputs-$mode"
+    local pw_output_dir="pw-outputs-$mode"
 
-    cp $cargo_file Cargo.toml
+    cp "$cargo_file" Cargo.toml
     bash scripts/build.bash
 
     cd "bench-wasm-web"
@@ -20,9 +20,10 @@ run_benchmarks() {
     npm i
     npm run benchmark
     npm run parse-benchmark
-    mkdir -p ../bench-results
-    cp BENCHMARK.md ../bench-results/$benchmark_file
-    cp -r pw-outputs ../bench-results/$pw_output_file
+
+    cp BENCHMARK.md ../bench-results/"$benchmark_file"
+    rm -rf ../bench-results/"$pw_output_dir"
+    mv pw-outputs ../bench-results/"$pw_output_dir"
 
     cd ..
 }

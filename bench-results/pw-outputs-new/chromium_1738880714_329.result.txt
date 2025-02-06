@@ -1,0 +1,1 @@
+{"result":{"average_ms":7517.495312500001,"median_ms":7554.829833999999,"benchmarkFn":"halo2curves"},"metaData":{"project":"chromium","config":{"testCases":30,"n":524288,"threads":10,"method":"halo2curves"}}}

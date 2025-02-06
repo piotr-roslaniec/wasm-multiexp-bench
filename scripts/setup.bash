@@ -24,9 +24,13 @@ rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 source "$HOME"/.bashrc
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Install and use Node.js version 18
 nvm install 18
 nvm use 18
 
 # Install Playwright with all dependencies
-(cd bench-wasm-web && npm install && npx playwright install --with-deps) # works despite missing deps/errors
+(cd bench-wasm-web && npm install && npx playwright install --with-deps chromium firefox) # works despite missing deps/errors

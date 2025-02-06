@@ -4,6 +4,6 @@
     "test": "node index.js"
   },
   "dependencies": {
-    "arkworks": "file:../../pkg"
+    "crate": "file:../../pkg"
   }
 }

@@ -1,0 +1,7 @@
+initThreads
+BenchmarkWorker: init(threads=undefined)
+BenchmarkWorker: init(threads=undefined) done
+Starting benchmark
+BLS12-381 multi-exponentiation: arkworks, n=524288 elements, test cases=30
+BenchmarkWorker: runBenchmark(524288, 30)
+BenchmarkWorker: runBenchmark() done

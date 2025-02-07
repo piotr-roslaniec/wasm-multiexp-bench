@@ -1,6 +1,6 @@
 import { expose } from "comlink";
-import * as arkworksMultithreaded from "arkworks/web-multithreaded";
-import * as arkworksSinglethreaded from "arkworks/web-singlethreaded";
+import * as crateMultithreaded from "crate/web-multithreaded";
+import * as crateSinglethreaded from "crate/web-singlethreaded";
 const { buildBls12381, BigBuffer } = require("ffjavascript"); // Doesn't support `import`-style imports
 
 let threadsInitialized: number | undefined = 0;
@@ -9,12 +9,12 @@ export class BenchmarkWorker {
   public async init(threads?: number): Promise<void> {
     console.log(`BenchmarkWorker: init(threads=${threads})`);
     if (threads !== undefined && threads > 1) {
-      await arkworksMultithreaded.default();
+      await crateMultithreaded.default();
       console.log(`BenchmarkWorker: initThreadpool`);
-      await arkworksMultithreaded.initThreadPool(threads);
+      await crateMultithreaded.initThreadPool(threads);
       threadsInitialized = threads;
     } else {
-      await arkworksSinglethreaded.default();
+      await crateSinglethreaded.default();
       threadsInitialized = threads;
     }
     console.log(`BenchmarkWorker: init(threads=${threads}) done`);
@@ -65,9 +65,17 @@ export class BenchmarkWorker {
       }
       case "arkworks": {
         if (threadsInitialized) {
-          return arkworksMultithreaded.bench_bls12381;
+          return crateMultithreaded.bench_ark_bn254;
         } else {
-          return arkworksSinglethreaded.bench_bls12381;
+          return crateSinglethreaded.bench_ark_bn254;
+        }
+      }
+
+      case "halo2curves": {
+        if (threadsInitialized) {
+          return crateMultithreaded.bench_halo2curves_bn254;
+        } else {
+          return crateSinglethreaded.bench_halo2curves_bn254;
         }
       }
       default: {

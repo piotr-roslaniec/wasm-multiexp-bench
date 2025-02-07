@@ -1,1 +1,0 @@
-{"result":{"average_ms":442.9004249998927,"median_ms":437.2849999964237,"benchmarkFn":"ffjavascript"},"metaData":{"project":"chromium","config":{"testCases":200,"threads":16,"n":65536,"method":"ffjavascript"}}}

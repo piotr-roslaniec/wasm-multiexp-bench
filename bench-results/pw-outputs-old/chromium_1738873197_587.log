@@ -1,0 +1,8 @@
+initThreads
+BenchmarkWorker: init(threads=16)
+BenchmarkWorker: initThreadpool
+BenchmarkWorker: init(threads=16) done
+Starting benchmark
+BLS12-381 multi-exponentiation: halo2curves, n=524288 elements, test cases=30
+BenchmarkWorker: runBenchmark(524288, 30)
+BenchmarkWorker: runBenchmark() done

@@ -52,9 +52,9 @@ const appendResultRecord = (testInfo, logFile, config, result) => {
 
 // Benchmark configs
 const BASE = {
-  testCases: 200,
+  testCases: 30,
+  n: 2 ** 19,
   threads: undefined,
-  n: 2 ** 16,
 };
 const ARKWORKS = {
   ...BASE,
@@ -64,9 +64,14 @@ const FFJAVASCRIPT = {
   ...BASE,
   method: "ffjavascript",
 };
+const HALO2CURVES = {
+  ...BASE,
+  method: "halo2curves",
+};
 const TEST_CONFIGS = {
   test_st_arkworks: { ...ARKWORKS, testCases: 1, n: 2 ** 6 },
   test_st_ffjavascript: { ...FFJAVASCRIPT, testCases: 1, n: 2 ** 6 },
+  test_st_halo2curves: { ...HALO2CURVES, testCases: 1, n: 2 ** 6 },
   test_mt_arkworks: { ...ARKWORKS, testCases: 1, threads: 2, n: 2 ** 6 },
   test_mt_ffjavascript: {
     ...FFJAVASCRIPT,
@@ -74,12 +79,14 @@ const TEST_CONFIGS = {
     threads: 2,
     n: 2 ** 6,
   },
+  test_mt_halo2curves: { ...HALO2CURVES, testCases: 1, threads: 2, n: 2 ** 6 },
 };
 const BENCHMARK_CONFIGS = {
   st_ffjavascript: FFJAVASCRIPT,
   mt_32_ffjavascript: { ...FFJAVASCRIPT, threads: 32 },
   mt_24_ffjavascript: { ...FFJAVASCRIPT, threads: 24 },
   mt_16_ffjavascript: { ...FFJAVASCRIPT, threads: 16 },
+  mt_10_ffjavascript: { ...FFJAVASCRIPT, threads: 10 },
   mt_8_ffjavascript: { ...FFJAVASCRIPT, threads: 8 },
   mt_4_ffjavscript: { ...FFJAVASCRIPT, threads: 4 },
   mt_2_ffjavascript: { ...FFJAVASCRIPT, threads: 2 },
@@ -87,9 +94,18 @@ const BENCHMARK_CONFIGS = {
   mt_32_arkworks: { ...ARKWORKS, threads: 32 },
   mt_24_arkworks: { ...ARKWORKS, threads: 24 },
   mt_16_arkworks: { ...ARKWORKS, threads: 16 },
+  mt_10_arkworks: { ...ARKWORKS, threads: 10 },
   mt_8_arkworks: { ...ARKWORKS, threads: 8 },
   mt_4_arkworks: { ...ARKWORKS, threads: 4 },
   mt_2_arkworks: { ...ARKWORKS, threads: 2 },
+  st_halo2curves: HALO2CURVES,
+  mt_32_halo2curves: { ...HALO2CURVES, threads: 32 },
+  mt_24_halo2curves: { ...HALO2CURVES, threads: 24 },
+  mt_16_halo2curves: { ...HALO2CURVES, threads: 16 },
+  mt_10_halo2curves: { ...HALO2CURVES, threads: 10 },
+  mt_8_halo2curves: { ...HALO2CURVES, threads: 8 },
+  mt_4_halo2curves: { ...HALO2CURVES, threads: 4 },
+  mt_2_halo2curves: { ...HALO2CURVES, threads: 2 },
 };
 
 const ALL_CONFIGS = {

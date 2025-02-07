@@ -1,4 +1,4 @@
-const { bench_bls12381 } = require("arkworks/node");
+const { ark_bench_bls12381 } = require("crate/node");
 const fs = require("fs");
 const path = require("path");
 
@@ -10,7 +10,7 @@ const path = require("path");
       console.log(`BLS12-381 multi-exponentiation, N = ${N} elements`);
 
       const testCases = 20;
-      const result = bench_bls12381(N, testCases);
+      const result = ark_bench_bls12381(N, testCases);
       const { average_ms, median_ms } = result[0];
       console.log(`Average: ${average_ms} ms`);
       console.log(`Median: ${median_ms} ms`);
